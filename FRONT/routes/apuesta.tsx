@@ -37,6 +37,7 @@ export default function Apuesta({ data }: PageProps<DatosApuesta>) {
         Cuota: <strong>{data.cuota}</strong>
       </p>
 
+
       {/* Aquí renderizamos el island que maneja el email y la apuesta */}
       <IslaApuesta
         equipoLocal={data.equipoLocal}
@@ -46,6 +47,8 @@ export default function Apuesta({ data }: PageProps<DatosApuesta>) {
         seleccion={data.seleccion}
         cuota={data.cuota}
       />
+
+
     </div>
   );
 }

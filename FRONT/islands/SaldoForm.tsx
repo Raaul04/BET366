@@ -11,7 +11,7 @@ export default function SaldoForm() {
     if (user) {
       const { id, bets } = JSON.parse(user);
       setUserId(id);
-      setSaldo(bets ?? 0); // Asumimos que en user viene el saldo "bets"
+      setSaldo(bets ?? 0); 
     }
   }, []);
 
@@ -40,7 +40,7 @@ export default function SaldoForm() {
     const data = await res.json();
 
     if (res.ok) {
-      setSaldo(data.saldo);  // Actualiza saldo con la respuesta del backend
+      setSaldo(data.saldo);  
       setMensaje(`✅ Operación exitosa. Nuevo saldo: ${data.saldo} Bets`);
     } else {
       setMensaje(`❌ Error: ${data.error}`);
@@ -62,6 +62,11 @@ export default function SaldoForm() {
         <button onClick={() => manejarOperacion("retiro")} style={{ marginLeft: "1em" }}>
           ➖ Retirar Bets
         </button>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <a href="/main" class="btn btn-secondary"> Volver </a>
       </div>
       <p style={{ marginTop: "1em" }}>{mensaje}</p>
     </div>

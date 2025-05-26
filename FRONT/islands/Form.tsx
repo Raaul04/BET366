@@ -28,7 +28,7 @@ const Form: FunctionComponent = () => {
     } else {
       setError("");
 
-      // Enviar al backend del registro
+      // Enviamos el backend del registro
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);

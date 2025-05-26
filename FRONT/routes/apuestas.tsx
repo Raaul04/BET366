@@ -1,4 +1,3 @@
-// routes/apuestas.tsx
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ApuestasCollection } from "../db/db.ts";
 

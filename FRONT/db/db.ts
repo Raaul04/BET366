@@ -1,4 +1,3 @@
-// db.ts
 import { MongoClient, OptionalId } from "npm:mongodb";
 import { Partido, UserSaldo } from "../types.ts";
 

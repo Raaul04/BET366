@@ -1,5 +1,3 @@
-  // ruta donde están tus colecciones
-
 import { ApuestasCollection } from "../../db/db.ts";
 
 export const handler = async (req: Request): Promise<Response> => {

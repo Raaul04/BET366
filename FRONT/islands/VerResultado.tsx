@@ -4,16 +4,16 @@ import { Apuesta } from "../types.ts";
 interface Props {
   apuesta: Apuesta;
   email: string;
+  actualizarSaldo: () => void; 
 }
 
-export default function VerResultado({ apuesta, email }: Props) {
-  const [resuelta, setResuelta] = useState(apuesta.resuelta ?? false);
+export default function VerResultado({ apuesta, email, actualizarSaldo }: Props) {
+  const [resuelta, setResuelta] = useState(false);
   const [mensaje, setMensaje] = useState("");
 
   const resolver = async () => {
     if (resuelta || apuesta.resuelta) return;
 
-    // Simular resultado real aleatorio
     const opciones = ["home", "draw", "away"];
     const resultado = opciones[Math.floor(Math.random() * 3)];
     const acertada = resultado === apuesta.seleccion;
@@ -24,7 +24,7 @@ export default function VerResultado({ apuesta, email }: Props) {
     const res = await fetch("/api/resolver-apuesta", {
       method: "POST",
       body: JSON.stringify({
-        apuestaId: apuesta._id?.toString(),
+        apuestaId: apuesta._id,
         resultado,
         acertada,
         cambio,
@@ -33,10 +33,8 @@ export default function VerResultado({ apuesta, email }: Props) {
     });
 
     if (res.ok) {
-      // ✅ Bloquea clics futuros
       setResuelta(true);
-      apuesta.resuelta = true;
-
+      actualizarSaldo(); 
       setMensaje(
         acertada
           ? `¡Ganaste! Has recibido ${cambio.toFixed(2)} bets.`

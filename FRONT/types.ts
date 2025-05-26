@@ -1,4 +1,3 @@
-// types.ts
 import { ObjectId, OptionalId } from "npm:mongodb";
 
 export type User = {
@@ -24,11 +23,11 @@ export type Apuesta = {
   partido: {
     equipoLocal: string;
     equipoVisitante: string;
-    fecha: string; // o Date si prefieres parsearlo
+    fecha: string; 
     hora: string;
   };
 
-  cuotas: Record<string, string>; // o un tipo más específico si quieres
+  cuotas: Record<string, string>; 
 
   seleccion: "home" | "draw" | "away";
   cuota: string;

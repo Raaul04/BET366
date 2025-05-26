@@ -19,7 +19,7 @@ export default function UserIcon({ mostrarDetalles = false }: { mostrarDetalles?
 
   const cerrarSesion = () => {
     localStorage.removeItem("usuario");
-    window.location.href = "/login"; // o "/" si prefieres ir al inicio
+    window.location.href = "/login"; 
   };
 
   if (!usuario) {

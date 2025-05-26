@@ -1,8 +1,34 @@
 import { Handlers } from "$fresh/server.ts";
-import {  UsersCollection } from "../../db/db.ts";
-import { ObjectId } from "npm:mongodb"; // ✅
+import { UsersCollection } from "../../db/db.ts";
+import { ObjectId } from "npm:mongodb";
 
 export const handler: Handlers = {
+  // Obtener saldo por email
+  async GET(req) {
+    const url = new URL(req.url);
+    const email = url.searchParams.get("email");
+
+    if (!email) {
+      return new Response(JSON.stringify({ error: "Email requerido" }), {
+        status: 400,
+      });
+    }
+
+    const user = await UsersCollection.findOne({ email });
+
+    if (!user) {
+      return new Response(JSON.stringify({ error: "Usuario no encontrado" }), {
+        status: 404,
+      });
+    }
+
+    return new Response(JSON.stringify({ bets: user.bets }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+
+  // Ingresar o retirar saldo por userId
   async POST(req) {
     const { tipo, cantidad, userId } = await req.json();
 
@@ -18,7 +44,7 @@ export const handler: Handlers = {
       });
     }
 
-    const user = await UsersCollection.findOne({ _id: new ObjectId(userId) }); // ✅
+    const user = await UsersCollection.findOne({ _id: new ObjectId(userId) });
 
     if (!user) {
       return new Response(JSON.stringify({ error: "Usuario no encontrado" }), {
@@ -37,11 +63,15 @@ export const handler: Handlers = {
         });
       }
       nuevoSaldo -= cantidad;
+    } else {
+      return new Response(JSON.stringify({ error: "Tipo inválido" }), {
+        status: 400,
+      });
     }
 
     await UsersCollection.updateOne(
-      { _id: new ObjectId(userId) }, // ✅
-      { $set: { bets: nuevoSaldo } },
+      { _id: new ObjectId(userId) },
+      { $set: { bets: nuevoSaldo } }
     );
 
     return new Response(JSON.stringify({ saldo: nuevoSaldo }), {

@@ -7,38 +7,65 @@ export default function UserApuestas() {
   const [email, setEmail] = useState("");
   const [saldo, setSaldo] = useState<number | null>(null);
 
+  const cargarSaldo = async (correo: string) => {
+    try {
+      const res = await fetch(`/api/saldo?email=${correo}`);
+      const data = await res.json();
+      setSaldo(data.bets);
+    } catch (err) {
+      console.error("Error al cargar saldo:", err);
+    }
+  };
+
   useEffect(() => {
     const stored = localStorage.getItem("user");
     if (!stored) return;
+
     const user = JSON.parse(stored);
     setEmail(user.email);
 
     // Cargar apuestas
     fetch(`/api/apuestas?email=${user.email}`)
-      .then(res => res.json())
-      .then(data => setApuestas(data));
+      .then((res) => res.json())
+      .then((data) => setApuestas(data));
 
+    // Cargar saldo
+    cargarSaldo(user.email);
   }, []);
 
   return (
     <div className="user-profile-page">
       <h1>Tus Apuestas</h1>
 
+      {saldo === null ? (
+        <p>Cargando saldo...</p>
+      ) : (
+        <p
+          style={{
+            fontWeight: "bold",
+            fontSize: "1.2rem",
+            marginBottom: "1rem",
+          }}
+        >
+          Saldo actual: {saldo.toFixed(2)} bets
+        </p>
+      )}
+
       {apuestas.length === 0 && <p>No tienes apuestas todavía.</p>}
 
       <a
         href="/main"
         className="button"
-        style={{ marginBottom: "1rem", display: "inline-block", textDecoration: "none", color: "white", backgroundColor: "#007bff", padding: "0.5rem 1rem", borderRadius: "4px" }}
+        style={{ marginBottom: "1rem", display: "inline-block" }}
       >
-        Volver Pagina principal
+        Volver al inicio
       </a>
 
       {apuestas.map((apuesta) => (
         <div
           key={apuesta._id?.toString()}
           className="match-card"
-          style={{ marginBottom: "1rem" }}
+          style="margin-bottom: 1rem;"
         >
           <p>
             <strong>{apuesta.partido.equipoLocal}</strong> vs{" "}
@@ -60,7 +87,11 @@ export default function UserApuestas() {
                 : `Perdiste. Se restaron ${apuesta.monto} bets.`}
             </p>
           ) : (
-            <VerResultado apuesta={apuesta} email={email} />
+            <VerResultado
+              apuesta={apuesta}
+              email={email}
+              actualizarSaldo={() => cargarSaldo(email)}
+            />
           )}
         </div>
       ))}

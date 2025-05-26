@@ -83,6 +83,11 @@ export default function IslaApuesta(props: Props) {
       <button type="submit">Confirmar Apuesta</button>
 
       {mensaje && <p>{mensaje}</p>}
+      <br />
+      <br />
+
+      <a href="/main" class="btn btn-secondary"> Volver </a>
+
     </form>
   );
 }
