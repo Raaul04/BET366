@@ -13,11 +13,11 @@ const API_URL = `https://v3.football.api-sports.io/fixtures?season=${SEASON}&lea
 const app = new Application();
 
 // Función para generar cuotas aleatorias entre 1.5 y 5.0
-function generateRandomOdds(): { home: string, away: string, draw: string } {
+function generateRandomOdds(): { home: string; away: string; draw: string } {
   return {
-    home: (Math.random() * (5.0 - 1.5) + 1.5).toFixed(2),
-    away: (Math.random() * (5.0 - 1.5) + 1.5).toFixed(2),
-    draw: (Math.random() * (5.0 - 1.5) + 1.5).toFixed(2)
+    home: (Math.random() * (2.0 - 1.2) + 1.2).toFixed(2),  
+    away: (Math.random() * (5.0 - 1.8) + 1.8).toFixed(2),  
+    draw: (Math.random() * (4.0 - 2.0) + 2.0).toFixed(2),  
   };
 }
 

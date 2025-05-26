@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import UsersCollection from "../../db/User.ts";
+import {  UsersCollection } from "../../db/db.ts";
 import { ObjectId } from "npm:mongodb"; // ✅
 
 export const handler: Handlers = {

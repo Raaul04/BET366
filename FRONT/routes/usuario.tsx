@@ -1,3 +1,4 @@
+// routes/usuario.tsx
 import UserIcon from "../islands/UserIcon.tsx";
 
 export default function UsuarioPage() {

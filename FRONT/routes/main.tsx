@@ -1,6 +1,7 @@
 import "https://deno.land/std@0.216.0/dotenv/load.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import UserIcon from "../islands/UserIcon.tsx";
+import UserApuestas from "../islands/UserApuestas.tsx";
 
 // Función para generar cuotas aleatorias
 function generateRandomOdds(): { home: string; away: string; draw: string } {
@@ -85,6 +86,9 @@ export default function Main({ data }: PageProps<Partido[]>) {
         <div className="right-items">
           <UserIcon />
           <a href="/saldo" className="saldo-link">💰 Gestión de Saldo</a>
+        </div>
+        <div>
+          <a href="/visualizar-apuestas" className="button_apuesta"> Ver Apuestas</a>
         </div>
       </div>
 

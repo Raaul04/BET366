@@ -5,8 +5,10 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_apostar from "./routes/api/apostar.ts";
+import * as $api_apuestas from "./routes/api/apuestas.ts";
 import * as $api_login from "./routes/api/login.ts";
 import * as $api_register from "./routes/api/register.ts";
+import * as $api_resolver_apuesta from "./routes/api/resolver-apuesta.ts";
 import * as $api_saldo from "./routes/api/saldo.ts";
 import * as $apuesta from "./routes/apuesta.tsx";
 import * as $apuestas from "./routes/apuestas.tsx";
@@ -16,11 +18,14 @@ import * as $main from "./routes/main.tsx";
 import * as $register from "./routes/register.tsx";
 import * as $saldo from "./routes/saldo.tsx";
 import * as $usuario from "./routes/usuario.tsx";
+import * as $visualizar_apuestas from "./routes/visualizar-apuestas.tsx";
 import * as $Form from "./islands/Form.tsx";
 import * as $IslaApuesta from "./islands/IslaApuesta.tsx";
 import * as $LoginForm from "./islands/LoginForm.tsx";
 import * as $SaldoForm from "./islands/SaldoForm.tsx";
+import * as $UserApuestas from "./islands/UserApuestas.tsx";
 import * as $UserIcon from "./islands/UserIcon.tsx";
+import * as $VerResultado from "./islands/VerResultado.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -28,8 +33,10 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/apostar.ts": $api_apostar,
+    "./routes/api/apuestas.ts": $api_apuestas,
     "./routes/api/login.ts": $api_login,
     "./routes/api/register.ts": $api_register,
+    "./routes/api/resolver-apuesta.ts": $api_resolver_apuesta,
     "./routes/api/saldo.ts": $api_saldo,
     "./routes/apuesta.tsx": $apuesta,
     "./routes/apuestas.tsx": $apuestas,
@@ -39,13 +46,16 @@ const manifest = {
     "./routes/register.tsx": $register,
     "./routes/saldo.tsx": $saldo,
     "./routes/usuario.tsx": $usuario,
+    "./routes/visualizar-apuestas.tsx": $visualizar_apuestas,
   },
   islands: {
     "./islands/Form.tsx": $Form,
     "./islands/IslaApuesta.tsx": $IslaApuesta,
     "./islands/LoginForm.tsx": $LoginForm,
     "./islands/SaldoForm.tsx": $SaldoForm,
+    "./islands/UserApuestas.tsx": $UserApuestas,
     "./islands/UserIcon.tsx": $UserIcon,
+    "./islands/VerResultado.tsx": $VerResultado,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

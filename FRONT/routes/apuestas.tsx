@@ -1,6 +1,7 @@
 // routes/apuestas.tsx
 import { Handlers, PageProps } from "$fresh/server.ts";
-import ApuestasCollection from "../db/apuestas.ts";
+import { ApuestasCollection } from "../db/db.ts";
+
 
 interface Apuesta {
   userEmail: string;

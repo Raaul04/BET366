@@ -1,5 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
-import UsersCollection from "../../db/User.ts";
+import { UsersCollection } from "../../db/db.ts";
 export const handler: Handlers = {
   async POST(req) {
     const { email } = await req.json();

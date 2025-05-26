@@ -1,5 +1,6 @@
+// db.ts
 import { MongoClient, OptionalId } from "npm:mongodb";
-import { Partido } from "../types.ts";
+import { Partido, UserSaldo } from "../types.ts";
 
 const url = Deno.env.get("MONGO_URL");
 if (!url) throw new Error("MONGO_URL not set");
@@ -9,7 +10,7 @@ await client.connect();
 
 type ApuestaDB = OptionalId<{
   userId: string;
-  email?: string; 
+  email?: string;
   partido: Partido;
   seleccion: string;
   cuota: string;
@@ -18,6 +19,6 @@ type ApuestaDB = OptionalId<{
 }>;
 
 const db = client.db("usuarios");
-const ApuestasCollection = db.collection<ApuestaDB>("apuestas");
 
-export default ApuestasCollection;
+export const ApuestasCollection = db.collection<ApuestaDB>("apuestas");
+export const UsersCollection = db.collection<UserSaldo>("users");

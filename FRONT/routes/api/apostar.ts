@@ -1,6 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import ApuestasCollection from "../../db/apuestas.ts";
-import UsersCollection from "../../db/User.ts";
+import { ApuestasCollection, UsersCollection } from "../../db/db.ts";
+
 
 export const handler: Handlers = {
   async POST(req) {

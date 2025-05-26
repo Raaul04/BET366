@@ -39,7 +39,10 @@ export default function UserIcon({ mostrarDetalles = false }: { mostrarDetalles?
           Cerrar sesión
         </button>
         <br />
-        <a href="/" className="back-home">← Volver al inicio</a>
+        <a href="/" className="back-home">  Volver al inicio  </a>
+        <br/>
+        <a href="/main"  className="back-home">Volver a apostar</a>
+
       </div>
     );
   }
