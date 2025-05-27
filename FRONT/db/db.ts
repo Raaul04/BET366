@@ -1,8 +1,12 @@
 import { MongoClient, OptionalId } from "npm:mongodb";
 import { Partido, UserSaldo } from "../types.ts";
 
+
+
 const url = Deno.env.get("MONGO_URL");
 if (!url) throw new Error("MONGO_URL not set");
+
+
 
 const client = new MongoClient(url);
 await client.connect();
