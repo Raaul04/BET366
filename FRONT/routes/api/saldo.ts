@@ -5,7 +5,7 @@ import { ObjectId } from "npm:mongodb";
 export const handler: Handlers = {
   // Obtener saldo por email
   async GET(req) {
-    const url = new URL(req.url);
+    const url = new URL(  req.url);
     const email = url.searchParams.get("email");
 
     if (!email) {

@@ -64,8 +64,16 @@ export default function UserApuestas() {
       {apuestas.map((apuesta) => (
         <div
           key={apuesta._id?.toString()}
-          className="match-card"
-          style="margin-bottom: 1rem;"
+          style={{
+            marginBottom: "1rem",
+            padding: "1rem",
+            borderRadius: "0.75rem",
+            backgroundColor: "#f9f9f9",
+            color: "#111",
+            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+            fontFamily: "system-ui, sans-serif",
+            lineHeight: "1.5",
+          }}
         >
           <p>
             <strong>{apuesta.partido.equipoLocal}</strong> vs{" "}
