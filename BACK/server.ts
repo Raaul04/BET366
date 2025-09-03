@@ -1,7 +1,6 @@
 import { Application, Context } from "https://deno.land/x/oak/mod.ts";
 
 
-
 const app = new Application();
 
 // Función para generar cuotas aleatorias entre 1.5 y 5.0

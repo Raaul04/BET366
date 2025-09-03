@@ -4,7 +4,7 @@ import { Partido, UserSaldo } from "../types.ts";
 
 
 const url = Deno.env.get("MONGO_URL");
-if (!url) throw new Error("MONGO_URL not set");
+if (!url) throw new Error("not set el mongo ");
 
 
 
