@@ -1,14 +1,6 @@
 import { Application, Context } from "https://deno.land/x/oak/mod.ts";
 
-// Reemplaza con tu API Key de API-FOOTBALL
-const API_KEY = "83cfc25867a7236127ff4f5b1ba10ffa";  
-const LEAGUE_ID = 140; // 140 = Serie A (Italia) - Cambiar según la liga
-const SEASON = 2023; // Temporada 2023
-const FROM_DATE = "2023-01-01"; // Fecha de inicio de la temporada
-const TO_DATE = "2023-12-31"; // Fecha de fin de la temporada
 
-// URL de la API de API-Football para obtener los partidos
-const API_URL = `https://v3.football.api-sports.io/fixtures?season=${SEASON}&league=${LEAGUE_ID}&from=${FROM_DATE}&to=${TO_DATE}`;
 
 const app = new Application();
 
