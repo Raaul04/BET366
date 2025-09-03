@@ -1,6 +1,5 @@
 import { useState } from "preact/hooks";
 import { Apuesta } from "../types.ts";
-
 interface Props {
   apuesta: Apuesta;
   email: string;
